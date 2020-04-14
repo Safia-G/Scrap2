@@ -1,24 +1,22 @@
 <?php
 if(isset($_POST["submit"]))
 {
-$host="localhost"; // Host name.
-$db_user="root"; //mysql user
-$db_password="0000"; //mysql pass
-$db='prospect'; // Database name.
-//$conn=mysql_connect($host,$db_user,$db_password) or die (mysql_error());
-//mysql_select_db($db) or die (mysql_error());
+$host="localhost"; // nom de l'hôte.
+$db_user="root"; // nom de l'utilisateur
+$db_password="0000"; // mot de passe de la bdd
+$db='prospect'; // nom de la bdd
 $con=mysqli_connect($host,$db_user,$db_password,$db);
-// Check connection
+// verification de la connexion
 if (mysqli_connect_errno())
 {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  echo "Nous n'avons pas pu vous connecter à MySQL: " . mysqli_connect_error();
 }
 
 
 echo $filename=$_FILES["file"]["name"];
 $ext=substr($filename,strrpos($filename,"."),(strlen($filename)-strrpos($filename,".")));
 
-//we check,file must be have csv extention
+//verification que le fichier sois bien au format CSV
 if($ext=="csv")
 {
   $file = fopen($filename, "r");
@@ -28,10 +26,10 @@ if($ext=="csv")
             mysqli_query($con, $sql);
          }
          fclose($file);
-         echo "CSV File has been successfully Imported.";
+         echo "Le fichier CSV a bien été importé.";
 }
 else {
-    echo "Error: Please Upload only CSV File";
+    echo "Erreur : s'il vous plaît ne chargez que des fichiers au format CSV";
 }
 
 
