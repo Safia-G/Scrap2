@@ -12,7 +12,6 @@ if (mysqli_connect_errno())
   echo "Nous n'avons pas pu vous connecter à MySQL: " . mysqli_connect_error();
 }
 
-
 echo $filename=$_FILES["file"]["name"];
 $ext=substr($filename,strrpos($filename,"."),(strlen($filename)-strrpos($filename,".")));
 
@@ -31,7 +30,5 @@ if($ext=="csv")
 else {
     echo "Erreur : s'il vous plaît ne chargez que des fichiers au format CSV";
 }
-
-
 }
 ?>
